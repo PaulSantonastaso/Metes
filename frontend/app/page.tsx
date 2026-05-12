@@ -1,4 +1,5 @@
 import { Composer } from "@/components/home/Composer";
+import Footer from "@/components/layout/Footer";
 
 // ─────────────────────────────────────────────────────────────────
 // Metes brand palette — scoped to landing page
@@ -483,36 +484,7 @@ export default function HomePage() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer style={{ background: C.forestDeep, padding: "64px 0 32px" }}>
-          <div className={CONTENT}>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-[2fr_1fr_1fr_1fr]" style={{ marginBottom: "48px" }}>
-              <div className="col-span-2 sm:col-span-1">
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "var(--font-manrope, sans-serif)", fontWeight: 700, fontSize: "17px", color: C.creamWarm, marginBottom: "16px" }}>
-                  <div style={{ width: "24px", height: "24px", background: C.forest, borderRadius: "6px", position: "relative", flexShrink: 0 }}>
-                    <div style={{ position: "absolute", inset: "6px", border: `1.5px solid ${C.gold}`, borderRadius: "2px" }} />
-                  </div>
-                  metes
-                </div>
-                <p style={{ fontSize: "13px", lineHeight: 1.6, color: "rgba(244,240,232,0.65)", maxWidth: "280px" }}>
-                  The marketing kit for the modern listing. Built for solo agents who&apos;d rather be showing homes than writing about them.
-                </p>
-              </div>
-              {([["Product", ["How it works", "See an example", "Pricing"]], ["Company", ["About", "Contact"]], ["Legal", ["Terms", "Privacy", "MLS compliance"]]] as [string, string[]][]).map(([heading, links]) => (
-                <div key={heading}>
-                  <h4 style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "11px", letterSpacing: "0.14em", textTransform: "uppercase" as const, color: C.goldSoft, marginBottom: "16px" }}>{heading}</h4>
-                  {links.map((link) => (
-                    <a key={link} href="#" style={{ display: "block", color: "rgba(244,240,232,0.78)", textDecoration: "none", fontSize: "13px", marginBottom: "10px" }}>{link}</a>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div style={{ borderTop: `1px solid ${C.borderDark}`, paddingTop: "24px", display: "flex", justifyContent: "space-between", fontFamily: "var(--font-jetbrains, monospace)", fontSize: "11px", color: "rgba(244,240,232,0.5)", letterSpacing: "0.04em" }}>
-              <span>© 2026 metes</span>
-              <span>metes.app</span>
-            </div>
-          </div>
-        </footer>
-
+        <Footer />
       </div>
     </>
   );

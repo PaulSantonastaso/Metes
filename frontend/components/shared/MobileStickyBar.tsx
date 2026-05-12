@@ -1,8 +1,10 @@
 "use client";
 
-import { Lock, Download, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Lock, Download, Loader2, X } from "lucide-react";
 import { cn, formatPrice } from "@/lib/utils";
 import { PRICING, type PurchaseOption } from "@/types";
+import { PurchaseCard } from "@/components/shared/PurchaseCard";
 
 type MobileStickyBarVariant = "checkout" | "download" | "generate";
 
@@ -14,7 +16,9 @@ interface CheckoutVariantProps extends MobileStickyBarBaseProps {
   variant: "checkout";
   selectedOption: PurchaseOption;
   isLoading?: boolean;
-  onCheckout: () => void;
+  isGenerating?: boolean;
+  sessionId: string;
+  onCheckout: (option: PurchaseOption, agentEmail: string) => Promise<void>;
 }
 
 interface DownloadVariantProps extends MobileStickyBarBaseProps {
@@ -54,36 +58,73 @@ export function MobileStickyBar(props: MobileStickyBarProps) {
 function CheckoutBar({
   selectedOption,
   isLoading = false,
+  isGenerating = false,
+  sessionId,
   onCheckout,
 }: CheckoutVariantProps) {
+  const [sheetOpen, setSheetOpen] = useState(false);
   const total = selectedOption === "listing" ? PRICING.listing : PRICING.both;
 
   return (
-    <div className="flex items-center justify-between gap-3">
-      <div>
-        <p className="text-xs text-muted-foreground">
-          {selectedOption === "listing" ? "Listing Copy" : "Listing + Photos"}
-        </p>
-        <p className="text-sm font-semibold text-foreground">
-          {formatPrice(total)}
-        </p>
+    <>
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <p className="text-xs text-muted-foreground">
+            {selectedOption === "listing" ? "Listing Copy" : "Listing + Photos"}
+          </p>
+          <p className="text-sm font-semibold text-foreground">
+            {formatPrice(total)}
+          </p>
+        </div>
+        <button
+          onClick={() => setSheetOpen(true)}
+          disabled={isLoading}
+          style={{ background: "var(--metes-forest)", color: "var(--metes-cream)" }}
+          className={cn(
+            "flex shrink-0 items-center gap-2 rounded-md px-5 py-2.5 text-xs font-semibold transition-opacity",
+            isLoading ? "cursor-not-allowed opacity-60" : "hover:opacity-90"
+          )}
+        >
+          {isLoading ? (
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          ) : (
+            <Lock className="h-3 w-3" />
+          )}
+          Checkout — {formatPrice(total)}
+        </button>
       </div>
-      <button
-        onClick={onCheckout}
-        disabled={isLoading}
-        className={cn(
-          "flex shrink-0 items-center gap-2 rounded-md bg-foreground px-5 py-2.5 text-xs font-semibold text-background transition-opacity",
-          isLoading ? "cursor-not-allowed opacity-60" : "hover:opacity-90"
-        )}
-      >
-        {isLoading ? (
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-        ) : (
-          <Lock className="h-3 w-3" />
-        )}
-        Checkout
-      </button>
-    </div>
+
+      {/* Bottom sheet */}
+      {sheetOpen && (
+        <div className="fixed inset-0 z-50 flex flex-col justify-end">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setSheetOpen(false)}
+          />
+          {/* Sheet */}
+          <div className="relative z-10 rounded-t-2xl bg-background px-4 pb-8 pt-4 shadow-xl">
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-sm font-semibold text-foreground">Choose your package</p>
+              <button
+                onClick={() => setSheetOpen(false)}
+                className="rounded-md p-1 text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <PurchaseCard
+              sessionId={sessionId}
+              isGenerating={isGenerating}
+              onCheckout={async (option, email) => {
+                await onCheckout(option, email);
+                setSheetOpen(false);
+              }}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
