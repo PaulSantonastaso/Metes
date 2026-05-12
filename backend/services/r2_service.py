@@ -132,8 +132,8 @@ def load_session_json(session_id: str) -> dict | None:
 
         # Check expiry
         import time
-        created_at = data.get("created_at", 0)
-        if time.time() - created_at > SESSION_TTL:
+        token_created_at = data.get("download_token_created_at") or data.get("created_at", 0)
+        if time.time() - token_created_at > SESSION_TTL:
             logger.info(f"[R2] Session {session_id} expired — not rehydrating")
             return None
 
@@ -348,7 +348,7 @@ def _serialize_results(results: dict | None) -> dict | None:
     try:
         serializable = {}
         for key, value in results.items():
-            if key in ("listing_details",):
+            if key in ("listing_details", "rename_result"):
                 # Skip non-serializable objects
                 continue
             try:

@@ -119,6 +119,8 @@ export interface Session {
   generatedContent?: GeneratedContent;
   /** Stripe payment state */
   paid: "none" | "listing" | "both";
+  /** Photo enhancement status from Autoenhance webhook */
+  enhancement_status?: "pending" | "processing" | "complete" | "failed";
   /** Agent email captured at checkout, for post-purchase confirmation */
   agentEmail?: string;
   /** Download token — present after payment */

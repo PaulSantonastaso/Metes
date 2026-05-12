@@ -112,6 +112,14 @@ export function getImageUrl(sessionId: string, imageId: string): string {
 }
 
 /**
+ * GET /api/images/:sessionId/enhanced/:filename
+ * Returns the enhanced image URL when photo upgrade is purchased.
+ */
+export function getEnhancedImageUrl(sessionId: string, filename: string): string {
+  return `${BASE_URL}/api/images/enhanced/${sessionId}/${filename}`;
+}
+
+/**
  * GET /api/download/:sessionId/:token
  * Returns the download URL — navigate browser here to trigger download.
  */

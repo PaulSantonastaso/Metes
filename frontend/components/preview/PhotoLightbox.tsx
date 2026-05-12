@@ -3,12 +3,13 @@
 import { useEffect, useCallback, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getImageUrl } from "@/lib/api";
+import { getImageUrl, getEnhancedImageUrl } from "@/lib/api";
 import type { ListingImage } from "@/types";
 
 interface PhotoLightboxProps {
   sessionId: string;
   images: ListingImage[];
+  useEnhanced?: boolean;
   initialIndex?: number;
   onClose: () => void;
 }
@@ -16,9 +17,14 @@ interface PhotoLightboxProps {
 export function PhotoLightbox({
   sessionId,
   images,
+  useEnhanced = false,
   initialIndex = 0,
   onClose,
 }: PhotoLightboxProps) {
+  const imgUrl = (img: ListingImage) =>
+    useEnhanced && img.filename
+      ? getEnhancedImageUrl(sessionId, img.filename)
+      : getImageUrl(sessionId, img.id);
   const sorted = [...images].sort((a, b) => a.rank - b.rank);
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const current = sorted[currentIndex];
@@ -84,7 +90,7 @@ export function PhotoLightbox({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             key={current.id}
-            src={getImageUrl(sessionId, current.id)}
+            src={imgUrl(current)}
             alt={formatRoomType(current.roomType)}
             className="max-h-full max-w-full rounded-lg object-contain"
           />
@@ -141,7 +147,7 @@ export function PhotoLightbox({
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={getImageUrl(sessionId, img.id)}
+                src={imgUrl(img)}
                 alt={img.roomType}
                 className="h-full w-full object-cover"
               />

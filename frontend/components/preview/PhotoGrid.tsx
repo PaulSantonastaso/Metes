@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { getImageUrl } from "@/lib/api";
+import { getImageUrl, getEnhancedImageUrl } from "@/lib/api";
 import { PhotoLightbox } from "@/components/preview/PhotoLightbox";
 import type { ListingImage } from "@/types";
 
 interface PhotoGridProps {
   sessionId: string;
   images: ListingImage[];
+  useEnhanced?: boolean;
   activeImageId?: string;
   onSelect?: (imageId: string) => void;
   className?: string;
@@ -17,10 +18,15 @@ interface PhotoGridProps {
 export function PhotoGrid({
   sessionId,
   images,
+  useEnhanced = false,
   activeImageId,
   onSelect,
   className,
 }: PhotoGridProps) {
+  const imgUrl = (img: ListingImage) =>
+    useEnhanced && img.filename
+      ? getEnhancedImageUrl(sessionId, img.filename)
+      : getImageUrl(sessionId, img.id);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -46,7 +52,7 @@ export function PhotoGrid({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={getImageUrl(sessionId, activeImageId ?? hero.id)}
+            src={imgUrl(sorted.find(i => i.id === (activeImageId ?? hero.id)) ?? hero)}
             alt="Listing photo"
             className="h-full w-full object-cover"
           />
@@ -65,7 +71,7 @@ export function PhotoGrid({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={getImageUrl(sessionId, hero.id)}
+            src={imgUrl(hero)}
             alt="Hero listing photo"
             className="h-full w-full object-cover transition-transform hover:scale-[1.02]"
           />
@@ -84,7 +90,7 @@ export function PhotoGrid({
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={getImageUrl(sessionId, img.id)}
+                src={imgUrl(img)}
                 alt={img.roomType}
                 className="h-full w-full object-cover transition-transform hover:scale-[1.02]"
               />
@@ -132,7 +138,7 @@ export function PhotoGrid({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={getImageUrl(sessionId, img.id)}
+              src={imgUrl(img)}
               alt={img.roomType}
               className="h-full w-full object-cover"
             />
@@ -145,6 +151,7 @@ export function PhotoGrid({
         <PhotoLightbox
           sessionId={sessionId}
           images={sorted}
+          useEnhanced={useEnhanced}
           initialIndex={lightboxIndex}
           onClose={() => setLightboxOpen(false)}
         />

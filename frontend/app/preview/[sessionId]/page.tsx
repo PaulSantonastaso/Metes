@@ -155,6 +155,7 @@ function PreviewPageContent({
           <PhotoGrid
             sessionId={sessionId}
             images={session.images}
+            useEnhanced={session.enhancement_status === "complete" && session.paid === "both"}
             activeImageId={activeImageId}
             onSelect={setActiveImageId}
           />
