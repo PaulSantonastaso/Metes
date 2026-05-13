@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Navbar } from "@/components/layout/Navbar";
 import { Loader2, AlertTriangle, CheckCircle2, ArrowRight } from "lucide-react";
 import Footer from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 
 // ─────────────────────────────────────────────────────────────────
 // Types
@@ -237,7 +237,7 @@ export function ComplianceCheckClient() {
 
   return (
     <div className="min-h-screen bg-[#EFEAE0]">
-      <Navbar />
+      <Header />
 
       {/* ─────────────── HERO + SCANNER ─────────────── */}
       <section className="border-b border-[rgba(20,39,30,0.10)] bg-[#F4F0E8]">

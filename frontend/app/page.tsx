@@ -1,5 +1,52 @@
+import { Header } from "@/components/layout/Header";
+import type { Metadata } from "next";
 import { Composer } from "@/components/home/Composer";
 import Footer from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: "Automate MLS Listing Descriptions and Social Posts in 60 Seconds | metes",
+  description:
+    "Turn messy notes and raw photos into FHA-compliant MLS descriptions, sorted image galleries, and ready-to-post social media. Generate your complete real estate marketing kit in under 60 seconds. $35 per listing.",
+  keywords: [
+    "MLS listing description",
+    "AI listing description generator",
+    "real estate marketing automation",
+    "fair housing compliant MLS",
+    "real estate AI tool",
+    "automate MLS listing",
+    "real estate social media posts",
+  ],
+  alternates: {
+    canonical: "https://www.metes.app",
+  },
+  openGraph: {
+    title: "Automate MLS Listing Descriptions and Social Posts in 60 Seconds",
+    description:
+      "Upload your photos and notes. Get FHA-compliant MLS copy, sorted galleries, and ready-to-post social media — in under 60 seconds. $35 per listing, no subscription.",
+    url: "https://www.metes.app",
+    siteName: "metes",
+    type: "website",
+    images: [
+      {
+        url: "https://www.metes.app/og/homepage.png",
+        width: 1200,
+        height: 630,
+        alt: "metes — AI-powered real estate listing marketing",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automate MLS Listing Descriptions and Social Posts in 60 Seconds",
+    description:
+      "FHA-compliant MLS copy, sorted galleries, ready-to-post social — in under 60 seconds. $35 per listing.",
+    images: ["https://www.metes.app/og/homepage.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 // ─────────────────────────────────────────────────────────────────
 // Metes brand palette — scoped to landing page
@@ -233,20 +280,7 @@ export default function HomePage() {
       <div style={{ background: C.cream, minHeight: "100vh" }}>
 
         {/* ── NAV ── */}
-        <nav style={{ borderBottom: `1px solid ${C.border}`, background: C.cream, position: "sticky", top: 0, zIndex: 50 }}>
-          <div className={CONTENT} style={{ height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "var(--font-manrope, sans-serif)", fontWeight: 700, fontSize: "17px", color: C.forest }}>
-              <div style={{ width: "24px", height: "24px", background: C.forest, borderRadius: "6px", position: "relative", flexShrink: 0 }}>
-                <div style={{ position: "absolute", inset: "6px", border: `1.5px solid ${C.gold}`, borderRadius: "2px" }} />
-              </div>
-              metes
-            </div>
-            <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
-              <a href="#how-it-works" style={{ fontSize: "13px", fontWeight: 500, color: C.inkSoft, textDecoration: "none" }}>How it works</a>
-              <a href="#pricing" style={{ fontSize: "13px", fontWeight: 500, color: C.inkSoft, textDecoration: "none" }}>Pricing</a>
-            </div>
-          </div>
-        </nav>
+        <Header />
 
         {/* ── HERO ── */}
         <section className="grid-bg" style={{ background: C.forest, padding: "80px 0 56px" }}>
@@ -283,10 +317,10 @@ export default function HomePage() {
             <div style={{ marginBottom: "40px" }}>
               <SectionLabel>Free preview</SectionLabel>
               <h2 style={{ ...sectionHeadline, marginBottom: "12px" }}>
-                See the whole thing before you pay <em style={{ fontStyle: "normal", color: C.goldDeep }}>$35</em>.
+                See the entire marketing kit before you pay <em style={{ fontStyle: "normal", color: C.goldDeep }}>$35</em>.
               </h2>
               <p style={sectionSub}>
-                No signup, no email, no trial. Upload, generate, scroll through everything we made — then decide if it&apos;s worth the download.
+                Stop paying for blind AI results. Upload your assets and review your generated MLS listing, neighborhood guide, and social posts directly in your browser. With our pay-per-listing model, if you don&apos;t love the output, you don&apos;t pay.
               </p>
             </div>
             <div className="proof-scroll">
@@ -347,7 +381,7 @@ export default function HomePage() {
           <div className={CONTENT}>
             <SectionLabel>Why Metes</SectionLabel>
             <h2 style={{ ...sectionHeadline, marginBottom: "48px" }}>
-              Four things <em style={{ fontStyle: "normal", color: C.goldDeep }}>no one else does</em>.
+              Built for real estate. <em style={{ fontStyle: "normal", color: C.goldDeep }}>Not retrofitted from a generic AI.</em>
             </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <MoatCard num="01" title="We read your photos, not just your notes.">
@@ -389,7 +423,7 @@ export default function HomePage() {
           <div className={CONTENT}>
             <SectionLabel>How it works</SectionLabel>
             <h2 style={{ ...sectionHeadline, marginBottom: "40px" }}>
-              Three steps. <em style={{ fontStyle: "normal", color: C.goldDeep }}>One coffee.</em>
+              From rough notes to ready-to-list in <em style={{ fontStyle: "normal", color: C.goldDeep }}>three steps</em>.
             </h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
@@ -412,10 +446,10 @@ export default function HomePage() {
           <div className={CONTENT} style={{ position: "relative", zIndex: 1 }}>
             <SectionLabel light>Photo editing add-on</SectionLabel>
             <h2 style={{ ...sectionHeadline, color: C.creamWarm, marginBottom: "12px" }}>
-              Skies that always look <em style={{ fontStyle: "normal", color: C.gold }}>like the day you wished it was</em>.
+              Upgrade to <em style={{ fontStyle: "normal", color: C.gold }}>professional photo polish</em>.
             </h2>
             <p style={{ ...sectionSub, color: C.creamDim, marginBottom: "40px", maxWidth: "600px" }}>
-              Most exterior shots get gray, blown-out, or overcast skies. Our photo editing add-on swaps them for clean blue skies, fixes color and perspective on the rest, and delivers them straight to your email.
+              Give your smartphone photos a high-end agency edge. Our Image Intelligence enhances your 25 selected photos — fixing lighting, correcting colors, and replacing gray skies with perfect blue ones. Professional visuals without the photographer&apos;s invoice.
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2" style={{ marginBottom: "24px" }}>
               <div style={{ borderRadius: "12px", overflow: "hidden", aspectRatio: "4/3", position: "relative" }} className="ba-card-before">
@@ -440,9 +474,12 @@ export default function HomePage() {
         <section style={{ padding: "80px 0", background: C.cream }} id="pricing">
           <div className={CONTENT}>
             <SectionLabel>Pricing</SectionLabel>
-            <h2 style={{ ...sectionHeadline, marginBottom: "48px" }}>
+            <h2 style={{ ...sectionHeadline, marginBottom: "16px" }}>
               Pay per listing.<br /><em style={{ fontStyle: "normal", color: C.goldDeep }}>No subscription.</em>
             </h2>
+            <p style={{ ...sectionSub, marginBottom: "48px" }}>
+              Metes is built for the way you work. You only pay when you have a house to sell. Get the complete marketing kit for $35, or add professional photo polish for $45.
+            </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:max-w-3xl">
               <div style={{ background: C.creamWarm, borderRadius: "14px", padding: "32px 28px", border: `1px solid ${C.border}` }}>
                 <div style={{ fontFamily: "var(--font-manrope, sans-serif)", fontWeight: 900, fontSize: "48px", letterSpacing: "-0.04em", color: C.forestDeep, lineHeight: 1, marginBottom: "6px" }}>$35</div>
