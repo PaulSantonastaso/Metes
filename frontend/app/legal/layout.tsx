@@ -2,6 +2,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 
 // Brand palette (from your homepage)
 const C = {
@@ -30,66 +31,7 @@ export default function LegalLayout({ children }: { children: ReactNode }) {
   return (
     <div style={{ background: C.cream, minHeight: "100vh" }}>
       {/* Header */}
-      <nav style={{
-        borderBottom: `1px solid ${C.border}`,
-        background: C.cream,
-        position: "sticky",
-        top: 0,
-        zIndex: 50
-      }}>
-        <div className={CONTENT} style={{
-          height: "60px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between"
-        }}>
-          <Link href="/" style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            fontFamily: "var(--font-manrope, sans-serif)",
-            fontWeight: 700,
-            fontSize: "17px",
-            color: C.forest,
-            textDecoration: "none"
-          }}>
-            <div style={{
-              width: "24px",
-              height: "24px",
-              background: C.forest,
-              borderRadius: "6px",
-              position: "relative",
-              flexShrink: 0
-            }}>
-              <div style={{
-                position: "absolute",
-                inset: "6px",
-                border: `1.5px solid ${C.gold}`,
-                borderRadius: "2px"
-              }} />
-            </div>
-            metes
-          </Link>
-          <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
-            <Link href="/#how-it-works" style={{
-              fontSize: "13px",
-              fontWeight: 500,
-              color: C.inkSoft,
-              textDecoration: "none"
-            }}>
-              How it works
-            </Link>
-            <Link href="/#pricing" style={{
-              fontSize: "13px",
-              fontWeight: 500,
-              color: C.inkSoft,
-              textDecoration: "none"
-            }}>
-              Pricing
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Header />
 
       {/* Main Content */}
       <main style={{ padding: "80px 0" }}>
