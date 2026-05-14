@@ -240,7 +240,7 @@ export default function HomePage() {
         @media (min-width: 1024px) {
           .proof-scroll {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             overflow-x: visible;
           }
@@ -251,6 +251,7 @@ export default function HomePage() {
           width: 80vw;
           max-width: 340px;
           scroll-snap-align: start;
+          min-width: 0;
         }
 
         @media (min-width: 1024px) {
@@ -329,7 +330,7 @@ export default function HomePage() {
                 <div style={proofBody}>Saltillo floors run from the entryway to a sun-soaked primary suite that opens onto its own private patio. The newly renovated kitchen anchors the home, while a year-round heated pool below frames the view.</div>
                 <div style={{ marginTop: "auto", paddingTop: "12px", borderTop: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", fontSize: "11px", color: C.muted }}>
                   <span><strong style={{ color: C.forest, fontWeight: 500 }}>1,247</strong> chars · MLS-ready</span>
-                  <span>Lifestyle tone</span>
+                  <span style={{ color: "#5C8A6E", fontWeight: 500 }}>✓ FHA cleared</span>
                 </div>
               </ProofCard>
 
@@ -337,6 +338,10 @@ export default function HomePage() {
                 <div style={proofHeadline}>Ready-to-post for every channel.</div>
                 <SocialPost platform="Instagram · Caption 1">Sun, saltillo, and a pool that&apos;s heated year-round — 412 Oak Ridge just hit the market. 4 bed / 3 bath in the Catalinas. DM for a private tour. 🌵</SocialPost>
                 <SocialPost platform="Facebook · Just Listed">New listing alert: $1.275M Spanish revival on a quiet ridge with Catalina views. Open House Saturday 1–3.</SocialPost>
+                <div style={{ marginTop: "auto", paddingTop: "12px", borderTop: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", fontSize: "11px", color: C.muted }}>
+                  <span>3 posts · platform-specific</span>
+                  <span style={{ color: "#5C8A6E", fontWeight: 500 }}>✓ FHA cleared</span>
+                </div>
               </ProofCard>
 
               <ProofCard tag="Email Campaign" tagColor={C.forest} tagBg="rgba(31,61,46,0.08)">
@@ -349,17 +354,9 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-              </ProofCard>
-
-              <ProofCard tag="Compliance Audit" tagColor="#5C8A6E" tagBg="rgba(92,138,110,0.12)">
-                <div style={proofHeadline}>Fair Housing reviewed before you publish.</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                  {["No protected-class language detected", "\"Walkable\" flagged & approved with context", "All 4 emails + 3 social posts cleared"].map((text) => (
-                    <div key={text} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 10px", background: "rgba(20,39,30,0.03)", borderRadius: "6px", fontSize: "12px" }}>
-                      <div style={{ width: "16px", height: "16px", borderRadius: "50%", background: "#5C8A6E", color: "white", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "9px", flexShrink: 0 }}>✓</div>
-                      <span style={{ color: C.ink, fontWeight: 500 }}>{text}</span>
-                    </div>
-                  ))}
+                <div style={{ marginTop: "auto", paddingTop: "12px", borderTop: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", fontSize: "11px", color: C.muted }}>
+                  <span>4 emails · sequenced</span>
+                  <span style={{ color: "#5C8A6E", fontWeight: 500 }}>✓ FHA cleared</span>
                 </div>
               </ProofCard>
 
@@ -370,7 +367,10 @@ export default function HomePage() {
                     <div key={n}><span style={{ color: C.goldDeep }}>{n}</span> <span style={{ color: C.forest }}>{r}</span><span style={{ color: C.muted }}>{f}</span></div>
                   ))}
                 </div>
-                <div style={proofBody}>Pool before garage. Hero shot first. Drag, drop, publish.</div>
+                <div style={{ marginTop: "auto", paddingTop: "12px", borderTop: `1px solid ${C.border}`, display: "flex", justifyContent: "space-between", fontSize: "11px", color: C.muted }}>
+                  <span>Top 25 · MLS-renamed</span>
+                  <span style={{ color: "#5C8A6E", fontWeight: 500 }}>✓ FHA cleared</span>
+                </div>
               </ProofCard>
             </div>
           </div>
