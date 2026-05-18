@@ -96,6 +96,10 @@ def save_session_json(session_id: str, session: dict) -> bool:
             "image_intelligence": _serialize_image_intelligence(
                 session.get("image_intelligence")
             ),
+            "images": _serialize_images(
+                session.get("image_intelligence"),
+                results=session.get("results"),
+            ),
         }
 
         s3.put_object(
@@ -371,3 +375,38 @@ def _serialize_image_intelligence(intelligence) -> dict | None:
         return intelligence.model_dump()
     except Exception:
         return None
+
+
+def _serialize_images(intelligence, results=None) -> list:
+    if not intelligence or not getattr(intelligence, "ranked_images", None):
+        return []
+    try:
+        rename_lookup: dict[str, str] = {}
+        is_curated_set: set[str] = set()
+        rename_result = results.get("rename_result") if results else None
+        if rename_result and hasattr(rename_result, "all_images"):
+            for renamed_img in rename_result.all_images:
+                rename_lookup[renamed_img.image_id] = renamed_img.renamed_filename
+            for renamed_img in rename_result.curated:
+                is_curated_set.add(renamed_img.image_id)
+
+        highlight_ids = set(getattr(intelligence, "highlight_images", None) or [])
+        return [
+            {
+                "id": img.image_id,
+                "url": f"/api/images/placeholder/{img.image_id}",
+                "rank": idx + 1,
+                "roomType": img.room_type or "other",
+                "qualityScore": img.quality_score or 0.5,
+                "skyVisible": getattr(img, "sky_visible", False) or False,
+                "selectedForSocial": img.image_id in highlight_ids,
+                "caption": img.reason or "",
+                "filename": img.filename,
+                "renamedFilename": rename_lookup.get(img.image_id, img.filename),
+                "isCurated": img.image_id in is_curated_set if is_curated_set else idx < 25,
+            }
+            for idx, img in enumerate(intelligence.ranked_images)
+        ]
+    except Exception as e:
+        logger.error(f"[R2] _serialize_images failed: {e}")
+        return []

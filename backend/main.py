@@ -413,7 +413,7 @@ def _serialize_session(session: dict) -> dict:
         "sessionId": session["session_id"],
         "status": status,
         "property": _serialize_property(session.get("extracted_details")),
-        "images": _serialize_images(
+        "images": session.get("images") or _serialize_images(
             session.get("image_intelligence"),
             session["session_id"],
             rename_result=rename_result,
