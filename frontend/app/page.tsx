@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     "real estate AI tool",
     "automate MLS listing",
     "real estate social media posts",
+    "neighborhood description generator",
+    "MLS neighborhood description",
+    "real estate neighborhood guide AI",
   ],
   alternates: {
     canonical: "https://www.metes.app",
@@ -414,6 +417,215 @@ export default function HomePage() {
                   ))}
                 </div>
               </MoatCard>
+            </div>
+          </div>
+        </section>
+
+        {/* ── NEIGHBORHOOD INTELLIGENCE ── */}
+        <section style={{ padding: "96px 0", background: C.cream }} id="neighborhood-intelligence">
+          <div className={CONTENT}>
+            <SectionLabel>Neighborhood intelligence</SectionLabel>
+            <h2 style={{ ...sectionHeadline, marginBottom: "16px" }}>
+              A neighborhood description generator that <em style={{ fontStyle: "normal", color: C.goldDeep }}>actually knows the neighborhood</em>.
+            </h2>
+            <p style={{ ...sectionSub, marginBottom: "48px", maxWidth: "640px" }}>
+              Most AI listing tools generate generic neighborhood text. We pull live local data from Google Places — parks, dining, daily essentials — to build a property-specific dossier. Drop the lifestyle paragraph into your MLS community field. Use the categorical sections as listing presentation talking points.
+            </p>
+
+            <div className="neighborhood-examples">
+              {/* Card 1 — Suburban */}
+              <article className="neighborhood-card">
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+                  <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: C.moss, padding: "4px 8px", background: "rgba(74,107,83,0.10)", borderRadius: "4px" }}>
+                    Suburban
+                  </span>
+                  <span style={{ fontSize: "11px", color: C.muted, fontFamily: "var(--font-jetbrains, monospace)" }}>
+                    Westover Hills · Orlando
+                  </span>
+                </div>
+                <h3 style={{ fontSize: "14px", fontWeight: 600, color: C.forestDeep, marginBottom: "10px", letterSpacing: "-0.005em" }}>
+                  Neighborhood summary
+                </h3>
+                <p style={{ fontSize: "13px", lineHeight: 1.6, color: C.ink, marginBottom: "20px" }}>
+                  A balanced lifestyle where daily essentials sit just minutes away. Pick up fresh ingredients at the Publix at Good Homes Plaza, then unwind at Lake Florence Park or the West Orange Trail.
+                </p>
+                <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "16px" }}>
+                  <h4 style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.10em", textTransform: "uppercase", color: C.muted, marginBottom: "10px" }}>
+                    Outdoor & recreation
+                  </h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Lake Florence Park
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Honolulu Park
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      West Orange Trail
+                    </li>
+                  </ul>
+                </div>
+              </article>
+
+              {/* Card 2 — Urban */}
+              <article className="neighborhood-card">
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+                  <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: C.goldDeep, padding: "4px 8px", background: "rgba(184,153,104,0.12)", borderRadius: "4px" }}>
+                    Urban
+                  </span>
+                  <span style={{ fontSize: "11px", color: C.muted, fontFamily: "var(--font-jetbrains, monospace)" }}>
+                    Lower Greenville · Dallas
+                  </span>
+                </div>
+                <h3 style={{ fontSize: "14px", fontWeight: 600, color: C.forestDeep, marginBottom: "10px", letterSpacing: "-0.005em" }}>
+                  Neighborhood summary
+                </h3>
+                <p style={{ fontSize: "13px", lineHeight: 1.6, color: C.ink, marginBottom: "20px" }}>
+                  A walkable corridor where the morning starts at Halcyon Coffee and the evening ends on a patio along Greenville Ave. Daily life flows between independent shops, weekend brunch spots, and a Trader Joe&apos;s within reach.
+                </p>
+                <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "16px" }}>
+                  <h4 style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.10em", textTransform: "uppercase", color: C.muted, marginBottom: "10px" }}>
+                    Dining nearby
+                  </h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      HG Sply Co
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Sundown at Granada
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Goodfriend Beer Garden
+                    </li>
+                  </ul>
+                </div>
+              </article>
+
+              {/* Card 3 — Coastal */}
+              <article className="neighborhood-card">
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
+                  <span style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: C.forest, padding: "4px 8px", background: "rgba(31,61,46,0.08)", borderRadius: "4px" }}>
+                    Coastal
+                  </span>
+                  <span style={{ fontSize: "11px", color: C.muted, fontFamily: "var(--font-jetbrains, monospace)" }}>
+                    Siesta Key · Sarasota
+                  </span>
+                </div>
+                <h3 style={{ fontSize: "14px", fontWeight: 600, color: C.forestDeep, marginBottom: "10px", letterSpacing: "-0.005em" }}>
+                  Neighborhood summary
+                </h3>
+                <p style={{ fontSize: "13px", lineHeight: 1.6, color: C.ink, marginBottom: "20px" }}>
+                  A short distance separates this address from quartz-sand shorelines and the casual rhythm of Siesta Village. Mornings on the beach, lunch at Daiquiri Deck, and a sunset view that frames every evening.
+                </p>
+                <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "16px" }}>
+                  <h4 style={{ fontFamily: "var(--font-jetbrains, monospace)", fontSize: "10px", letterSpacing: "0.10em", textTransform: "uppercase", color: C.muted, marginBottom: "10px" }}>
+                    The everyday
+                  </h4>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Morton&apos;s Siesta Market
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Siesta Key Oyster Bar
+                    </li>
+                    <li style={{ fontSize: "12.5px", color: C.ink, paddingLeft: "12px", position: "relative" }}>
+                      <span style={{ position: "absolute", left: 0, color: C.gold }}>•</span>
+                      Crescent Beach access
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+
+            <p style={{ marginTop: "32px", fontSize: "12px", color: C.muted, fontFamily: "var(--font-jetbrains, monospace)", letterSpacing: "0.04em", textAlign: "center" }}>
+              Powered by live Google Places data · Refreshed per listing · No generic neighborhood templates
+            </p>
+          </div>
+
+          <style>{`
+            .neighborhood-examples {
+              display: flex;
+              gap: 12px;
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              scrollbar-width: none;
+              padding-bottom: 8px;
+            }
+            .neighborhood-examples::-webkit-scrollbar { display: none; }
+            .neighborhood-card {
+              flex-shrink: 0;
+              width: 80vw;
+              max-width: 340px;
+              scroll-snap-align: start;
+              background: #FAF7F0;
+              border-radius: 12px;
+              border: 1px solid rgba(20,39,30,0.10);
+              padding: 22px 22px 20px;
+              display: flex;
+              flex-direction: column;
+              min-width: 0;
+            }
+            @media (min-width: 1024px) {
+              .neighborhood-examples {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+                overflow-x: visible;
+              }
+              .neighborhood-card { width: auto; max-width: none; }
+            }
+          `}</style>
+        </section>
+
+        {/* ── NEIGHBORHOOD FAQ ── */}
+        <section style={{ background: C.forestDeep, padding: "80px 0", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(184,153,104,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(184,153,104,0.05) 1px, transparent 1px)", backgroundSize: "32px 32px", pointerEvents: "none" }} />
+          <div className={CONTENT} style={{ position: "relative" }}>
+            <SectionLabel light>Common questions</SectionLabel>
+            <h2 style={{ ...sectionHeadline, color: C.creamWarm, marginBottom: "40px", maxWidth: "640px" }}>
+              How agents use the <em style={{ fontStyle: "normal", color: C.gold }}>neighborhood guide</em>.
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "780px" }}>
+              <details style={{ borderRadius: "10px", border: "1px solid rgba(244,240,232,0.12)", background: "rgba(244,240,232,0.03)", padding: "18px 22px" }}>
+                <summary style={{ fontSize: "15px", fontWeight: 500, color: C.creamWarm, cursor: "pointer", listStyle: "none", letterSpacing: "-0.005em" }}>
+                  What should an MLS neighborhood description include?
+                </summary>
+                <div style={{ marginTop: "14px", fontSize: "13.5px", lineHeight: 1.65, color: "rgba(244,240,232,0.78)" }}>
+                  A strong MLS neighborhood description balances lifestyle context with specific, verifiable details — named parks, grocery stores, dining, and walkable destinations. Avoid demographic language and proximity terms that imply mobility (the Fair Housing Act prohibits these). Our generator writes the lifestyle paragraph for the MLS community field, then provides a categorical reference document for listing presentations and emails.
+                </div>
+              </details>
+              <details style={{ borderRadius: "10px", border: "1px solid rgba(244,240,232,0.12)", background: "rgba(244,240,232,0.03)", padding: "18px 22px" }}>
+                <summary style={{ fontSize: "15px", fontWeight: 500, color: C.creamWarm, cursor: "pointer", listStyle: "none", letterSpacing: "-0.005em" }}>
+                  How does the neighborhood description generator avoid generic copy?
+                </summary>
+                <div style={{ marginTop: "14px", fontSize: "13.5px", lineHeight: 1.65, color: "rgba(244,240,232,0.78)" }}>
+                  Generic AI tools generate plausible-sounding neighborhood text from training data alone — which is why their output frequently invents businesses or misnames real ones. We anchor every neighborhood guide in live Google Places data, pulled at generation time using the property&apos;s address. The places, parks, and dining we mention are real, current, and within a defined radius of the listing.
+                </div>
+              </details>
+              <details style={{ borderRadius: "10px", border: "1px solid rgba(244,240,232,0.12)", background: "rgba(244,240,232,0.03)", padding: "18px 22px" }}>
+                <summary style={{ fontSize: "15px", fontWeight: 500, color: C.creamWarm, cursor: "pointer", listStyle: "none", letterSpacing: "-0.005em" }}>
+                  Can I use the neighborhood content beyond the MLS?
+                </summary>
+                <div style={{ marginTop: "14px", fontSize: "13.5px", lineHeight: 1.65, color: "rgba(244,240,232,0.78)" }}>
+                  That&apos;s the design intent. The lifestyle paragraph drops into MLS community fields and Zillow&apos;s &ldquo;What I Love About the Neighborhood&rdquo; section. The categorical sections work as talking points for listing presentations, content for buyer relocation emails, and reference material for open houses. One generation produces multiple ready-to-use formats.
+                </div>
+              </details>
+              <details style={{ borderRadius: "10px", border: "1px solid rgba(244,240,232,0.12)", background: "rgba(244,240,232,0.03)", padding: "18px 22px" }}>
+                <summary style={{ fontSize: "15px", fontWeight: 500, color: C.creamWarm, cursor: "pointer", listStyle: "none", letterSpacing: "-0.005em" }}>
+                  Is the neighborhood content reviewed for Fair Housing compliance?
+                </summary>
+                <div style={{ marginTop: "14px", fontSize: "13.5px", lineHeight: 1.65, color: "rgba(244,240,232,0.78)" }}>
+                  Yes. Every neighborhood paragraph is reviewed by the same compliance audit that runs on the MLS description, social posts, and emails. The most common issue with neighborhood copy — proximity language like &ldquo;walking distance&rdquo; that can be interpreted as exclusionary toward mobility-impaired buyers — is caught and revised automatically. The audit report ships with every listing kit.
+                </div>
+              </details>
             </div>
           </div>
         </section>

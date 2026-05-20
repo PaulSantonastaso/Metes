@@ -76,12 +76,15 @@ export function Header({ variant = "light", sticky = true }: HeaderProps) {
         </Link>
 
         {/* ── Nav links ── */}
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-4 sm:gap-6">
           <Link
             href="/#how-it-works"
             className={`text-[13px] font-medium no-underline transition-colors ${linkColor}`}
           >
             How it works
+          </Link>
+          <Link href="/#neighborhood-intelligence" className={`text-[13px] font-medium no-underline transition-colors ${linkColor}`}>
+            Neighborhood
           </Link>
           <Link
             href="/#pricing"
