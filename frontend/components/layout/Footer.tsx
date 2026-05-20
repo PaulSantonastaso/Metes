@@ -92,7 +92,7 @@ export default function Footer() {
                   // Features
                   "Compliance audit": "/compliance-audit",
                   "Neighborhood intelligence": "/#neighborhood-intelligence",
-                  "Photo curation": "/#",
+                  "Photo curation": "/photo-curation",
                   // Free tools
                   "Fair Housing checker": "/tools/fha-compliance-checker",
                   // Company
@@ -132,7 +132,12 @@ export default function Footer() {
           color: "rgba(244,240,232,0.5)",
           letterSpacing: "0.04em"
         }}>
-          <span>© 2026 metes · metes.app</span>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "16px" }}>
+            <span>© 2026 metes · metes.app</span>
+            <a href="mailto:help@metes.app" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>
+              help@metes.app
+            </a>
+          </div>
           <div style={{ display: "flex", gap: "20px" }}>
             <Link href="/legal/terms" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>Terms</Link>
             <Link href="/legal/privacy" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>Privacy</Link>
