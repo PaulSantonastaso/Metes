@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer style={{ background: C.forestDeep, padding: "64px 0 32px" }}>
       <div className={CONTENT}>
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-[2fr_1fr_1fr_1fr]" style={{ marginBottom: "48px" }}>
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-[2fr_1fr_1fr_1fr_1fr]" style={{ marginBottom: "48px" }}>
           <div className="col-span-2 sm:col-span-1">
             <Link href="/" style={{
               display: "flex",
@@ -66,7 +66,12 @@ export default function Footer() {
               The marketing kit for the modern listing. Built for solo agents who'd rather be showing homes than writing about them.
             </p>
           </div>
-          {([["Product", ["How it works", "See an example", "Pricing"]], ["Company", ["About", "Contact"]], ["Legal", ["Terms", "Privacy", "MLS compliance"]]] as [string, string[]][]).map(([heading, links]) => (
+          {([
+            ["Product", ["How it works", "See an example", "Pricing"]],
+            ["Features", ["Compliance audit", "Neighborhood intelligence", "Photo curation"]],
+            ["Free tools", ["Fair Housing checker"]],
+            ["Company", ["About", "Contact"]],
+          ] as [string, string[]][]).map(([heading, links]) => (
             <div key={heading}>
               <h4 style={{
                 fontFamily: "var(--font-jetbrains, monospace)",
@@ -79,16 +84,20 @@ export default function Footer() {
                 {heading}
               </h4>
               {links.map((link) => {
-                // Map legal links to /legal/ paths
                 const pathMap: Record<string, string> = {
-                    "Terms": "/legal/terms",
-                    "Privacy": "/legal/privacy",
-                    "MLS compliance": "/legal/compliance",
-                    "How it works": "/#how-it-works",
-                    "See an example": "/#",  
-                    "Pricing": "/#pricing",
-                    "About": "/about",  
-                    "Contact": "/contact"
+                  // Product
+                  "How it works": "/#how-it-works",
+                  "See an example": "/#",
+                  "Pricing": "/#pricing",
+                  // Features
+                  "Compliance audit": "/compliance-audit",
+                  "Neighborhood intelligence": "/#neighborhood-intelligence",
+                  "Photo curation": "/#",
+                  // Free tools
+                  "Fair Housing checker": "/tools/fha-compliance-checker",
+                  // Company
+                  "About": "/about",
+                  "Contact": "/contact",
                 };
                 const href = pathMap[link] || "#";
                 return (
@@ -114,14 +123,21 @@ export default function Footer() {
           borderTop: `1px solid ${C.borderDark}`,
           paddingTop: "24px",
           display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
           justifyContent: "space-between",
+          gap: "16px",
           fontFamily: "var(--font-jetbrains, monospace)",
           fontSize: "11px",
           color: "rgba(244,240,232,0.5)",
           letterSpacing: "0.04em"
         }}>
-          <span>© 2026 metes</span>
-          <span>metes.app</span>
+          <span>© 2026 metes · metes.app</span>
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Link href="/legal/terms" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>Terms</Link>
+            <Link href="/legal/privacy" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>Privacy</Link>
+            <Link href="/legal/compliance" style={{ color: "rgba(244,240,232,0.5)", textDecoration: "none" }}>MLS compliance</Link>
+          </div>
         </div>
       </div>
     </footer>
