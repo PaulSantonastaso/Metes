@@ -18,8 +18,11 @@ Do not invent additional features.
 
 MLS DESCRIPTION RULES (mls_summary):
 
-CHARACTER LIMIT: 
-- 950 characters maximum including spaces. This is a hard limit — MLS boards will reject submissions that exceed it. Count carefully. When in doubt, cut.-
+CHARACTER LIMIT:
+- 950 characters maximum including spaces. This is a HARD limit — MLS boards reject submissions that exceed it.
+- TARGET 890 characters, not 950. The 70-character buffer protects against LLM length-estimation drift.
+- After drafting, count the characters in your mls_summary. If over 890, cut the lowest-priority feature per the Sacrifice Rule below and recount. Repeat until under 880.
+- Never compress by removing spaces between sentences, dropping articles ("a", "the"), or running sentences together. Cut whole features instead.
 
 THE SACRIFICE RULE:
 - Prioritize the "Saturday Morning Test" (lifestyle and flow) over the "Spec Sheet" (dry technical details).
@@ -31,9 +34,9 @@ OPENING LINE:
 - Never open with "Welcome to", "Discover", "Nestled", or any variation of these generic greetings.
 - Never use the word "meticulously" or "stunning" or "dream home".
 - Examples of strong openings:
-    "Skip the 'to-do' list and head straight to the pool—this modern farmhouse is completely dialed-in."
     "Morning coffee on the Acacia wood counters, afternoons in the screened-in spa."
     "First-floor primary suite with private pool access—this layout was built for a seamless lifestyle."
+    "Slide open the glass doors and the pool becomes an extension of the living room."
 
 CLOSING LINE:
 - Never end with generic closing phrases: "Experience X living", 
@@ -63,10 +66,47 @@ WRITING RULES:
 - Sell the lifestyle, not the spec sheet.
 - Use short, punchy sentences for impact. Mix sentence lengths.
 - Do not introduce upgrades or features not found in the data.
-- If the data is ambiguous, prefer omission over inference.
+- If the data is ambiguous, prefer omission over inference. This applies especially to claims about the property's condition or renovation status — when in doubt, describe features, not claims.
 - Strict Punctuation: Always include exactly one single space after every period. Never cram sentences together or remove spaces to save character count.
 - Fair Housing: Strictly adhere to all Fair Housing guidelines. Do not describe demographics.
 - Do not repeat any specific stat, year, or feature already mentioned earlier in the description.
+
+---
+
+RENOVATION & CONDITION CLAIMS:
+
+The following claims may ONLY appear in the description when explicitly supported by the structured property details or agent notes:
+
+- "Gut-rehab", "fully renovated", "completely renovated", "newly renovated"
+- "Modernized", "updated", "remodeled", "refreshed"
+- "Dialed-in", "completely dialed-in", "turnkey" (when used to imply recent renovation)
+- "New kitchen", "new bath", "new flooring" (the word "new" requires an explicit data signal)
+- "Designer finishes", "high-end finishes", "luxury finishes"
+
+A presentable interior in photos is NOT sufficient evidence for any of these claims. Crown molding, hardwood floors, white cabinetry, and clean staging indicate a maintained home — they do not indicate a renovation.
+
+SAFE DEFAULT LANGUAGE for older homes without explicit renovation mention:
+- "Historic character intact"
+- "Well-maintained"
+- "Character-rich" / "Period details preserved"
+- "Move-in ready" (acceptable only when no defect signals are present in agent notes)
+- "Classic [architectural style]" / "Original [feature]"
+
+If the property's condition is unclear from the data, default to architectural and feature description ("brick exterior", "crown molding", "wood-burning fireplace") without making condition claims.
+
+EXAMPLES:
+
+WRONG (no renovation signal in data, but claim made anyway):
+"This Logan Square gut-rehab blends historic brick charm with a completely dialed-in interior."
+
+RIGHT (same property, condition-neutral framing):
+"Historic Logan Square brick home with original character intact and a private pergola deck out back."
+
+WRONG:
+"A modernized kitchen with crisp white cabinetry sets the stage."
+
+RIGHT (when no "modernized" signal exists):
+"A bright kitchen with white cabinetry sets the stage."
 
 ---
 

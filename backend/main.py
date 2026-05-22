@@ -956,6 +956,7 @@ async def create_checkout(session_id: str, request: Request):
             "payment_method_types": ["card"],
             "line_items": line_items,
             "mode": "payment",
+            "allow_promotion_codes": True,
             "success_url": success_url,
             "cancel_url": cancel_url,
             "metadata": {
