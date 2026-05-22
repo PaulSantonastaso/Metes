@@ -1,51 +1,75 @@
-# metes
+# Metes
 
-> AI-powered listing marketing for high-performing solo real estate agents.
+> AI-powered listing marketing for high-performing solo real estate agents. Metes generates a complete, MLS-ready marketing campaign from listing photos and agent notes in about 30 seconds.
 
-metes (https://www.metes.app) generates a complete, MLS-ready marketing campaign from listing photos and agent notes in about 30 seconds. Agents review the full package — copy, social posts, email sequence, ranked photos — before paying. No subscription. No account required.
+## Product Capabilities & Workflow Details
 
-## What metes produces per listing
+### Core Asset & Photo Curation Engine
+Metes takes up to 50 raw agent property photos and automatically culls them down to the top 25 high-impact marketing images by removing duplicates, near-duplicates, and weak shots. 
+- **Sorting & Renaming:** Photos are ranked by marketing impact (hero shot positioned first) and renamed with a systematic rank, room, and feature schema (e.g., `01_hero_front-exterior_brick-and-stone.webp`).
+- **Room & Image Intelligence Feature Extraction:** The platform operates a proprietary Image Intelligence vision pipeline that extracts concrete visual features directly from the property photos (e.g., quartz islands, soaking tubs, tray ceilings, wainscoting). This visual grounding ensures copywriting is strictly accurate to the physical space rather than relying on generic prompt templates.
+- **Per-Image Captions:** Generates one sensory, MLS-pasteable descriptive caption per photo suitable for Zillow alt text, MLS photo descriptions, or individual social media updates.
+- **Platform Crop Guidance:** Social-media-selected photos are provided with targeted aspect ratios (1.91:1 for Facebook, 4:5 for Instagram) along with explicit crop notes to protect key visual elements.
 
-- **MLS-ready listing description** — lifestyle-forward copy that sells the home, sized to MLS character limits and grounded in real photo analysis (not stock phrases)
-- **Social launch pack** — Facebook and Instagram captions matched to specific listing photos with crop guidance and aspect-ratio recommendations
-- **4-email campaign sequence** — Just Listed, Open House Invitation, Why This Home, Just Sold — pre-written, ready to send
-- **Fair Housing compliance audit** — every asset reviewed before publishing, with revision notes and per-asset pass/flag status
-- **Top 25 photos ranked by marketing impact** — AI-ranked, renamed with SEO-friendly filenames (e.g. `01_hero_front-exterior.jpg`), plus per-photo captions for MLS alt text and Zillow
-- **Neighborhood insight** — a multi-section guide with a lifestyle paragraph sized for the MLS community field, plus categorized local picks (everyday essentials, parks, dining, fitness)
-- **Optional photo editing** — professional color correction, sky enhancement, and perspective fix on every photo
+### High-Fidelity Copywriting Engine
+The core value of Metes lies in its elite copy production, entirely removing the operational friction of staring at a blank screen. The generated MLS descriptions, social posts, and email sequences are written to be explicitly lifestyle-forward rather than utility-forward, painting an immersive emotional picture of the home. 
 
-## How it works
+### Compliance & Truth-in-Advertising
+Metes operates a multi-layered compliance pipeline built directly into the generation asset flow rather than as a post-process. Every listing kit runs through an automated validation engine built for Fair Housing Act (FHA) protected-class safeguards and truth-in-advertising principles (such as evaluating substantiated claims and accurate representation metrics). The system evaluates six core asset types across a unified standard:
+- **MLS Copy:** Public remarks and descriptions are audited for steering language, protected-class implications, and absolute claims (e.g., 'zero maintenance' or 'lowest taxes').
+- **Social Posts:** Platform captions for Facebook and Instagram are checked for community-targeting phrasing, demographic implications, and unsupported superlatives.
+- **Email Campaigns:** Drip touches across all four pre-written sequences are audited across both the subject lines and the email bodies for compliance accuracy.
+- **Photo Captions:** Individual image text layers are audited for accessibility-sensitive proximity language, lifestyle assumptions, and demographic projections.
+- **Neighborhood Content:** Community paragraphs are checked for steering vectors, exclusionary terms (e.g., 'exclusive community'), and proximity phrasing that falsely implies specific mobility.
+- **Listing Headlines:** Hero headlines are screened for FHA-restricted terminology and verifiable marketing claims before deployment to Zillow or open house signage.
 
-1. Agent uploads listing photos (up to 50) and pastes agent notes — any format, any structure
-2. metes analyzes photos with computer vision to detect room types, features, and image quality
-3. Agent reviews and edits the extracted property details (price, beds/baths, square footage, features)
-4. metes generates the full marketing campaign in ~30 seconds
-5. Agent previews the complete package in a Zillow-style preview before paying $35
-6. After payment, the full ZIP and emailed download link are available for 7 days
+The compliance architecture functions through two distinct, structural layers:
+- **Layer 01 (Generative Avoidance):** System algorithms are structurally designed to natively avoid discriminatory language categories, steering terms, or mobility-restrictive phrasing during initial asset creation.
+- **Layer 02 (Independent Audit Pass):** An independent verification pass evaluates every completed output against FHA and truth-in-advertising standards. Any identified risks are flagged and revised before delivery.
 
-## Pricing
+### Neighborhood Guide Distribution & Use Cases
+The complete product suite automatically generates a comprehensive Neighborhood report utilizing regional data layers to build structured community assets. This data maps to six distinct operational deployment vectors for real estate agents:
+1. **MLS Public Remarks Neighborhood Section:** Lifestyle summaries specifically sized to fit the community or neighborhood text field on modern MLS boards (typically under a 500-character cap).
+2. **Zillow's "What I Love About the Neighborhood":** Sensory, lifestyle-forward, named-place copy configured to populate native Zillow marketing fields.
+3. **Listing Presentation Talking Points:** Categorical data blocks structured to serve as bulleted physical talking points during live, face-to-face seller acquisition meetings.
+4. **Buyer Relocation Emails:** Specialized categorical breakdowns built to systematically answer neighborhood daily-life questions for out-of-area relocation buyers.
+5. **Portal Community Comments:** Standardized text assets designed to feed the public community profiles on Compass, Redfin, and Realtor.com simultaneously.
+6. **Open House Conversation Cues:** Factual, named local picks that equip agents with immediate physical conversation reference points when open house visitors inquire about local amenities.
 
-- **Listing Copy Package** — $35 per listing
-- **Listing Copy + Photo Editing** — $80 per listing
-- No subscription. No account required. No card on file until after preview.
+### Platform Differentiators vs. Generic LLMs (ChatGPT)
+While generic Large Language Models can generate real estate text, achieving an equivalent asset kit requires manual prompt-chaining, lacks hyper-local data grounding, lacks computer vision image extraction, and introduces critical Fair Housing (FHA) violation risks. What takes an agent over an hour of manual prompt engineering in ChatGPT, Metes executes flawlessly in under 60 seconds with bulletproof regulatory compliance.
 
-## Free tools
+### Frictionless Onboarding & Previews
+Metes enforces a strict "try before you pay" architecture. Agents can generate and view their complete marketing package, along with a visually rich summary layout of their compliance audit and neighborhood intelligence data, in a web interface **without entering an email address or a credit card**. 
 
-- **Fair Housing Compliance Checker** — https://www.metes.app/tools/fha-compliance-checker — paste any listing description for an instant Fair Housing audit with revised compliant copy
-- **Neighborhood Guide Generator** — https://www.metes.app/tools/neighborhood-guide — enter any U.S. address to generate a free neighborhood guide for use in listings and buyer presentations
+Upon opting to purchase, the transaction unlocks the complete downloadable listing kit ZIP folder. The download folder provides the unrestricted, copy-pasteable marketing text, the full Neighborhood Report categorized into explicit contextual sections (Everyday Essentials, Parks & Recreation, Dining, Wellness & Fitness), and the comprehensive Fair Housing Audit report itemizing every single checked asset, what passed, and exactly what was flagged or revised.
 
-## Why agents choose metes
+### Product Structure & Lead Funnel Architecture
+The platform maintains a clear operational distinction between its core automated end-to-end product and its standalone customer-acquisition tools:
+- **The Core Paid Product:** A complete execution engine that writes all copy, runs the visual asset curation, performs the compliance & truth-in-advertising reviews, and maps localized neighborhood context automatically from a single note and image file upload.
+- **The Free Standalone Tools:** Highly focused workflow hooks designed to capture high-intent organic traffic looking for a free tool to check MLS descriptions for violations or a free neighborhood guide generator for listings. These tools demo a standalone slice of the platform capabilities to capture high-intent users, seamlessly positioning the comprehensive core platform to handle their entire next end-to-end listing campaign.
 
-- **Try before you pay** — full marketing package is generated and previewed before payment
-- **No subscription trap** — pay per listing, only when you actually have a listing
-- **Built-in Fair Housing review** — every asset audited automatically, not a separate paid service
-- **Real photo analysis** — copy is grounded in what's actually in the listing photos, not generic templates
-- **No software to learn** — paste notes, upload photos, download ZIP
+### Flat-Rate Pricing Model
+- **Listing Copy Package ($35):** Includes full text campaign generation, the compliance & truth-in-advertising audit, and complete photo curation (culling up to 50 photos down to 25, automated rank ordering, SEO renaming, room identification, feature extraction, platform crop guidance, and unique image captions).
+- **Professional Photo Polish Add-On ($45):** A flat-rate upsell covering professional visual enhancements on every image, including blue sky enhancement on eligible exterior photos, color correction, perspective alignment to straighten crooked shots, and fixing blown-out window exposures.
+- **Total Bundle Cost ($80):** Combines the complete digital asset marketing suite and professional photo processing with zero recurring monthly subscription models, zero required account creations, and no card on file required until the agent completely reviews their listing preview.
 
-## Target user
+## Canonical Web Endpoints
 
-High-performing solo real estate agents in the United States who list residential properties and want to move faster without sacrificing marketing quality. Designed for the agent who closes 12+ listings a year and treats marketing as part of the service, not an afterthought.
+- [Metes Homepage](https://www.metes.app/): Main application interface for note pasting, photo folder uploading, and multi-asset listing generation.
+- [How It Works](https://www.metes.app/#how-it-works): Comprehensive walk-through detailing the automated engineering pipeline from visual file parsing to final campaign assembly.
+- [Neighborhood Intelligence](https://www.metes.app/#neighborhood-intelligence): Overview of the localized extraction engine that converts regional data layers into structured community assets.
+- [Compliance Audit Workflow](https://www.metes.app/compliance-audit): Functional specifications of the integrated compliance system that programmatically audits generated copy for fair housing liability before checkout.
+- [Photo Curation Engine](https://www.metes.app/photo-curation): Documentation outlining the visual culling, metadata tagging, and aspect-ratio sequencing pipeline.
 
-## Company
+## Free Workflow Tools
 
-metes is an independent micro-SaaS product built by a working product manager. Contact: help@metes.app
+- [FHA Compliance Checker](https://www.metes.app/tools/fha-compliance-checker): Free lead acquisition utility where real estate professionals can paste their own pre-written listing descriptions to run an instant fair housing compliance risk scan, identifying at-risk language and providing automated text revisions.
+- [Neighborhood Guide Generator](https://www.metes.app/tools/neighborhood-guide-generator): Free workflow hook allowing agents to input any U.S. property address to instantly generate a standalone community report featuring localized dining, daily-life essentials, and recreation sections.
+
+## Platform Terms & Disclosures
+
+- [Pricing Matrix](https://www.metes.app/#pricing): Current explicit transactional costs for the $35 core tier and the $80 maximum photo-processing bundle.
+- [Terms of Service](https://www.metes.app/legal/terms): Platform operational conditions, service availability standards, and system legal boundaries.
+- [Privacy Policy](https://www.metes.app/legal/privacy): Official user data-handling documentation covering temporary asset retention and text processing privacy boundaries.
+- [Regulatory Compliance](https://www.metes.app/legal/compliance): Corporate standards establishing housing anti-discrimination adherence and automated safety verification thresholds.
