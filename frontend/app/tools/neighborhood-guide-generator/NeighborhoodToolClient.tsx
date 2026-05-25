@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 import Link from "next/link";
 import { Loader2, ArrowRight, MapPin, Copy, Check, CheckCircle2, AlertTriangle, Database, Layers, ShieldCheck, Compass, Sparkles, Quote } from "lucide-react";
 import Footer from "@/components/layout/Footer";
@@ -119,6 +120,7 @@ export function NeighborhoodToolClient() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [runsUsed, setRunsUsed] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   const resultRef = useRef<HTMLDivElement | null>(null);
 
@@ -146,6 +148,7 @@ export function NeighborhoodToolClient() {
         body: JSON.stringify({
           address: address.trim(),
           email: overrideEmail || email || null,
+          cf_turnstile_response: turnstileToken,
         }),
       });
 
@@ -226,7 +229,7 @@ export function NeighborhoodToolClient() {
                 </span>
                 <button
                   onClick={() => handleGenerate()}
-                  disabled={!address.trim() || status === "loading"}
+                  disabled={!address.trim() || status === "loading" || !turnstileToken}
                   className={`inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-manrope text-[13px] font-medium text-[#F4F0E8] transition-opacity ${
                     !address.trim() || status === "loading"
                       ? "cursor-not-allowed bg-[#4A6B53] opacity-50"
@@ -251,6 +254,16 @@ export function NeighborhoodToolClient() {
             <p className="mt-3.5 font-mono text-[11px] text-[rgba(20,39,30,0.55)]">
               3 free generations · then drop your email to keep generating · no subscription
             </p>
+
+            <div className="mt-4 flex justify-start">
+              <Turnstile
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+                onSuccess={setTurnstileToken}
+                onError={() => setTurnstileToken("")}
+                onExpire={() => setTurnstileToken("")}
+                options={{ theme: "light", size: "normal" }}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -284,7 +297,7 @@ export function NeighborhoodToolClient() {
                     />
                     <button
                       onClick={() => handleGenerate(email)}
-                      disabled={!email.trim()}
+                      disabled={!email.trim() || !turnstileToken}
                       className={`inline-flex items-center gap-2 rounded-lg bg-[#1F3D2E] px-5 py-2.5 font-manrope text-[13px] font-medium text-[#F4F0E8] ${
                         !email.trim() ? "cursor-not-allowed opacity-50" : "hover:opacity-90"
                       }`}

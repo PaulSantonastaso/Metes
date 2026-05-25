@@ -14,18 +14,18 @@ export const metadata: Metadata = {
     "real estate compliance tool",
   ],
   alternates: {
-    canonical: "https://metes.app/tools/fha-compliance-checker",
+    canonical: "https://www.metes.app/tools/fha-compliance-checker",
   },
   openGraph: {
     title: "Free Fair Housing Compliance Checker for Real Estate Agents",
     description:
       "Scan your MLS description for Fair Housing violations in 3 seconds. Free AI-powered audit. No signup.",
-    url: "https://metes.app/tools/fha-compliance-checker",
+    url: "https://www.metes.app/tools/fha-compliance-checker",
     siteName: "metes",
     type: "website",
     images: [
       {
-        url: "https://metes.app/og/fha-compliance-checker.png",
+        url: "https://www.metes.app/og/fha-compliance-checker.png",
         width: 1200,
         height: 630,
         alt: "metes Fair Housing Compliance Checker — free tool for real estate agents",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Free Fair Housing Compliance Checker for Real Estate Agents",
     description:
       "Scan your MLS description for Fair Housing violations in 3 seconds. Free, no signup.",
-    images: ["https://metes.app/og/fha-compliance-checker.png"],
+    images: ["https://www.metes.app/og/fha-compliance-checker.png"],
   },
   robots: {
     index: true,
