@@ -89,7 +89,7 @@ def build_image_caption_chain(api_key: str):
     Returns a plain string — no structured output needed for a single field.
     """
     llm = ChatGoogleGenerativeAI(
-        model="gemini-3.1-flash-lite-preview",
+        model="gemini-3.1-flash-lite",
         google_api_key=api_key,
         temperature=0.7,
     )
