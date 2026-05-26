@@ -734,7 +734,9 @@ async def _verify_turnstile(token: str) -> bool:
             resp = await client.post(
                 "https://challenges.cloudflare.com/turnstile/v1/siteverify",
                 data={"secret": secret, "response": token},
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
             )
+            print(f"[TURNSTILE] status={resp.status_code} body={resp.text[:300]}")
             return resp.json().get("success", False)
     except Exception:
         return True  # fail open — don't block users if Turnstile is unreachable
