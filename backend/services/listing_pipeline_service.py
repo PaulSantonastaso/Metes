@@ -179,6 +179,9 @@ async def generate_marketing_assets_service(
         "mls_summary": listing_output.mls_summary,
     }
 
+    if neighborhood_guide and neighborhood_guide.lifestyle_paragraph:
+        assets["neighborhood_lifestyle"] = neighborhood_guide.lifestyle_paragraph
+
     for i, post in enumerate(social_posts):
         platform = (post.platform or "social").lower().replace(" ", "_")
         slot = post.slot_name or f"post_{i + 1}"
@@ -206,6 +209,9 @@ async def generate_marketing_assets_service(
 
     # --- Apply compliant text back to outputs ---
     final_mls_summary = compliance_results["mls_summary"].compliant_text
+
+    if neighborhood_guide and "neighborhood_lifestyle" in compliance_results:
+        neighborhood_guide.lifestyle_paragraph = compliance_results["neighborhood_lifestyle"].compliant_text
 
     for i, post in enumerate(social_posts):
         platform = (post.platform or "social").lower().replace(" ", "_")

@@ -149,7 +149,10 @@ def _build_compliance_audit_file(res: dict) -> str:
         status_icon = {"pass": "✓ PASS", "revised": "~ REVISED", "flagged": "! FLAGGED"}.get(
             review.status, "? UNKNOWN"
         )
-        label = review.asset_type.replace("_", " ").upper()
+        if review.asset_type == "neighborhood_lifestyle":
+            label = "NEIGHBORHOOD GUIDE"
+        else:
+            label = review.asset_type.replace("_", " ").upper()
         entry = f"{status_icon} — {label}"
 
         if review.issues_found:
