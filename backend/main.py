@@ -50,6 +50,13 @@ from services.neighborhood_tool_service import (
     increment_run_count as increment_neighborhood_run_count,
 )
 
+from chains.description_diagnostic_chain import generate_diagnostic
+from services.description_diagnostic_service import (
+    check_ip_gate as check_diagnostic_ip_gate,
+    increment_run_count as increment_diagnostic_run_count,
+    compute_deterministic_signals,
+)
+
 load_dotenv()
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -1342,4 +1349,69 @@ async def neighborhood_guide_tool(
         "address": address,
         "neighborhood_guide": _format_dossier_for_tool(neighborhood_copy),
         "places": [p.name for p in neighborhood_context.places],
+    }
+
+
+# ---------------------------------------------------------------------------
+# POST /api/tools/description-checker
+# ---------------------------------------------------------------------------
+
+@app.post("/api/tools/description-checker")
+async def description_checker_tool(
+    request: Request,
+    payload: dict,
+):
+    """
+    Free Listing Description Checker.
+    3 free runs per IP per 7 days, then requires email.
+    Evaluates MLS description against 7 craft criteria.
+    """
+    description = (payload.get("description") or "").strip()
+    email = payload.get("email", None)
+    ip = request.client.host if request.client else "unknown"
+
+    # Input validation
+    if not description:
+        raise HTTPException(status_code=422, detail="description is required.")
+    if len(description) > 2000:
+        raise HTTPException(status_code=400, detail="input_too_long")
+
+    # Turnstile verification
+    turnstile_token = payload.get("cf_turnstile_response", "")
+    if not await _verify_turnstile(turnstile_token):
+        raise HTTPException(status_code=403, detail="Bot verification failed.")
+
+    # IP gate
+    gate = check_diagnostic_ip_gate(ip, email, _redis_client)
+    if not gate["allowed"]:
+        raise HTTPException(
+            status_code=402,
+            detail={
+                "gate": "email_required",
+                "runs_used": gate["runs_used"],
+            },
+        )
+
+    # Run diagnostic chain
+    try:
+        signals = compute_deterministic_signals(description)
+        diagnostic = await generate_diagnostic(description, signals, API_KEY)
+
+        if not diagnostic:
+            raise HTTPException(status_code=500, detail="Diagnostic generation failed.")
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"[DESCRIPTION CHECKER] Chain failed: {e}")
+        raise HTTPException(status_code=500, detail="Diagnostic generation failed.")
+
+    # Increment run count
+    increment_diagnostic_run_count(ip, _redis_client)
+
+    return {
+        "diagnostic": diagnostic.model_dump(),
+        "char_count": len(description),
+        "runs_used": gate["runs_used"] + 1,
+        "email_on_file": gate["email_on_file"],
     }
